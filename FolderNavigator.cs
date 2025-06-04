@@ -127,7 +127,7 @@ namespace TemperatureApp {
                 FileInput input;
                 try {
                     input = FileInput.FromFilePath(filePath);
-                    if (input.IsHumidity) throw new Exception($"Temperature information should not be inside of humidity directory.");
+                    if (!input.IsHumidity) throw new Exception($"Temperature information should not be inside of humidity directory.");
                 } catch (Exception e) {
                     // Decorate error and rethrow.
                     throw new Exception($"{e.Message} Illegal file: file://{filePath}", e);

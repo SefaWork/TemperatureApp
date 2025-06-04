@@ -1,4 +1,7 @@
 ﻿namespace TemperatureApp {
+    /// <summary>
+    /// Abstract class for processing behavior.
+    /// </summary>
     public abstract class InputProcessor {
         private string text;
         public string Text { get => text; }

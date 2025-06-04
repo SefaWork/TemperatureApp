@@ -16,6 +16,10 @@ namespace TemperatureApp
             GlobalListBox.Items.AddRange([..Enumerable.Repeat("Global", list.Length)]);
         }
 
+        /// <summary>
+        /// Updates root folder.
+        /// </summary>
+        /// <param name="path"></param>
         private void UpdateFolder(string path) {
             if(string.IsNullOrWhiteSpace(path)) {
                 this.navigator.SetRootFolder(null);
@@ -49,6 +53,9 @@ namespace TemperatureApp
             }
         }
 
+        /// <summary>
+        /// Opens a dialog window to browser folders.
+        /// </summary>
         private void BrowseFolder() {
             using (FolderBrowserDialog browser = new()) {
                 DialogResult result = browser.ShowDialog();
@@ -58,18 +65,32 @@ namespace TemperatureApp
             }
         }
 
+        /// <summary>
+        /// Displays an error message.
+        /// </summary>
+        /// <param name="exceptionMessage"></param>
         private void DisplayException(string exceptionMessage) {
             this.ResultsMessage.Clear();
             this.ResultsMessage.SelectionColor = Color.Red;
             this.ResultsMessage.AppendText($"Error | {exceptionMessage}");
         }
 
+        /// <summary>
+        /// Displays a success message.
+        /// </summary>
+        /// <param name="successMessage"></param>
         private void DisplaySuccess(string successMessage) {
             this.ResultsMessage.Clear();
             this.ResultsMessage.SelectionColor = Color.Green;
             this.ResultsMessage.AppendText($"Success | {successMessage}");
         }
 
+        /// <summary>
+        /// Event when calculate button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="Exception"></exception>
         private void CalculateButton_Click(object sender, EventArgs e) {
             if(this.navigator.RootFolder == "") {
                 this.BrowseFolder();
@@ -118,6 +139,11 @@ namespace TemperatureApp
             DisplaySuccess($"Results can be found in file://{navigator.ResultFolder}\\");
         }
         
+        /// <summary>
+        /// Event when a file link is clicked in results textbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResultsMessage_LinkClicked(object sender, System.Windows.Forms.LinkClickedEventArgs e) {
             if (e.LinkText == null) return;
             string[] split = e.LinkText.Split("file://");
@@ -127,6 +153,11 @@ namespace TemperatureApp
             Process.Start("explorer.exe", @path);
         }
 
+        /// <summary>
+        /// Event when select folder button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectFolderButton_Click(object sender, EventArgs e) {
             BrowseFolder();
         }

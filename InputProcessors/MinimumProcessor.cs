@@ -1,4 +1,7 @@
 ﻿namespace TemperatureApp.InputProcessors {
+    /// <summary>
+    /// Processor for finding minimum.
+    /// </summary>
     public class MinimumProcessor : InputProcessor {
         public MinimumProcessor() : base("Find Minimum") { }
 

@@ -1,4 +1,7 @@
 ﻿namespace TemperatureApp.InputProcessors {
+    /// <summary>
+    /// Processor for finding standard deviation.
+    /// </summary>
     public class StandardDeviationProcessor : InputProcessor {
         public StandardDeviationProcessor() : base("Find Standard Deviation") { }
 

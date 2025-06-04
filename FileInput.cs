@@ -2,6 +2,9 @@
 using System.Text;
 
 namespace TemperatureApp {
+    /// <summary>
+    /// Reads a file and stores relevant information for use later.
+    /// </summary>
     public class FileInput {
 
         //------------ These fields are used for localization. ----------
@@ -51,6 +54,12 @@ namespace TemperatureApp {
             this.isHumidity = false;
             this.values = [];
         }
+
+        /// <summary>
+        /// Loads value lines.
+        /// </summary>
+        /// <param name="lines"></param>
+        /// <exception cref="Exception"></exception>
         private void LoadValues(string[] lines) {
             foreach (string line in lines) {
                 string[] split = line.Split(',', StringSplitOptions.TrimEntries);
@@ -68,6 +77,12 @@ namespace TemperatureApp {
             if (this.values.Count == 0) throw new Exception("No values declared.");
         }
 
+        /// <summary>
+        /// Creates a FileInput instance from the first line in a file.
+        /// </summary>
+        /// <param name="line"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static FileInput FromDeclarationLine(string line) {
             // Tokenize line.
             string[] tokens = line.Split('-', StringSplitOptions.TrimEntries);
@@ -129,6 +144,11 @@ namespace TemperatureApp {
             return input;
         }
 
+        /// <summary>
+        /// Creates FileInput from the first line in a file and loads values into it from the rest of the lines.
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
         public static FileInput FromFilePath(string filePath) {
             FileStream file = File.Open(filePath, FileMode.Open);
 

@@ -1,4 +1,7 @@
 ﻿namespace TemperatureApp.InputProcessors {
+    /// <summary>
+    /// Processor for finding maximum value.
+    /// </summary>
     public class MaximumProcessor : InputProcessor {
         public MaximumProcessor() : base("Find Maximum") {}
 

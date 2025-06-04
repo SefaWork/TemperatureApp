@@ -39,6 +39,9 @@ namespace TemperatureApp {
             resultFolder = "";
         }
 
+        /// <summary>
+        /// Updates subdirectories.
+        /// </summary>
         private void FindSubdirectories() {
             this.temperatureFolder = "";
             this.humidityFolder = "";
@@ -74,6 +77,10 @@ namespace TemperatureApp {
             }
         }
 
+        /// <summary>
+        /// Gets a list of missing folder names.
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetMissingFolders() {
             if (this.rootFolder == "") return [];
             List<string> missing = [];
@@ -85,6 +92,11 @@ namespace TemperatureApp {
             return missing;
         }
 
+        /// <summary>
+        /// Gets a list of files from the temperature folder.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public FileInput[] GetTemperatureInputs() {
             if (this.temperatureFolder == "") return [];
             string[] filePaths = Directory.GetFiles(this.temperatureFolder);
@@ -111,6 +123,11 @@ namespace TemperatureApp {
             return allInputs;
         }
 
+        /// <summary>
+        /// Gets a list of humidity inputs from the humidity folder.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public FileInput[] GetHumidityInputs() {
             if (this.humidityFolder == "") return [];
             string[] filePaths = Directory.GetFiles(this.humidityFolder);
@@ -139,6 +156,11 @@ namespace TemperatureApp {
             return allInputs;
         }
 
+        /// <summary>
+        /// Sets the root folder, and calls for finding subfolders.
+        /// </summary>
+        /// <param name="folderPath"></param>
+        /// <returns></returns>
         public bool SetRootFolder(string? folderPath) {
             if(!string.IsNullOrWhiteSpace(folderPath)) {
                 if(Directory.Exists(folderPath)) {
@@ -154,6 +176,9 @@ namespace TemperatureApp {
             return false;
         }
 
+        /// <summary>
+        /// Creates missing folders in the root folder.
+        /// </summary>
         public void CreateMissingFolders() {
             if (this.rootFolder == "") return;
 
@@ -179,6 +204,13 @@ namespace TemperatureApp {
             }
         }
 
+        /// <summary>
+        /// Writes a result file in results folder, under respective measurement subfolder.
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="content"></param>
+        /// <param name="isHumidity">True for humidity subfolder, false for temperature subfolder.</param>
+        /// <exception cref="Exception"></exception>
         public void WriteResult(string fileName, string content, bool isHumidity) {
             string subfolderName;
 

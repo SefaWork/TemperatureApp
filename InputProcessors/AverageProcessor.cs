@@ -1,4 +1,7 @@
 ﻿namespace TemperatureApp.InputProcessors {
+    /// <summary>
+    /// Processor that finds average value.
+    /// </summary>
     public class AverageProcessor : InputProcessor {
         public AverageProcessor() : base("Find Average") {}
 

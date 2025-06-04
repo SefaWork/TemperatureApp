@@ -1,4 +1,7 @@
 ﻿namespace TemperatureApp.InputProcessors {
+    /// <summary>
+    /// Processor for finding median.
+    /// </summary>
     public class MedianProcessor : InputProcessor {
         public MedianProcessor() : base("Find Median") { }
 

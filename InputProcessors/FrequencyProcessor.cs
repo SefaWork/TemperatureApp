@@ -1,4 +1,7 @@
 ﻿namespace TemperatureApp.InputProcessors {
+    /// <summary>
+    /// Processor for finding frequency.
+    /// </summary>
     public class FrequencyProcessor : InputProcessor {
         public FrequencyProcessor() : base("Find Frequency") {}
 
